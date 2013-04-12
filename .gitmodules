@@ -1,0 +1,3 @@
+[submodule "Buildscript/Tools/PowerCore"]
+	path = Buildscript/Tools/PowerCore
+	url = https://github.com/adoprog/Sitecore-PowerCore.git
