@@ -14,7 +14,7 @@ properties {
     $tag_dir = "$localStorage\LiveSite"  
 }
 
-task Package -depends Init, Zip
+task Package -depends Init, Compile, Zip
 
 task Init {
     if (-not (Test-Path $localStorage)) {
