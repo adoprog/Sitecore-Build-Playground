@@ -46,7 +46,7 @@ task Compile {
 }
 
 task Zip {
-    $outputPath = "$buildFolder\output\SCNET_build.$buildNumber.zip"
+    $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber.zip"
 
     sz a $outputPath "$buildFolder\data" -xr!?serialization_TAG\* -xr!serialization* -mx1
     sz a $outputPath "$buildFolder\website" -mx1
