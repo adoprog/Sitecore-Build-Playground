@@ -4,7 +4,7 @@ if (-not (test-path "$env:ProgramFiles\7-Zip\7z.exe")) {throw "$env:ProgramFiles
 set-alias sz "$env:ProgramFiles\7-Zip\7z.exe" 
 
 properties {
-    $distributivePath = "\\ws-ado\Installs\Sitecore 6.6.0 rev. 130404.zip"
+    $distributivePath = "C:\Sitecore 6.5.0 rev. 120706.zip"
     $localStorage = "C:\LocalStorage"
     $distributiveName = [System.IO.Path]::GetFileNameWithoutExtension($distributivePath)
     $zipFile = "$localStorage\$distributiveName.zip"
