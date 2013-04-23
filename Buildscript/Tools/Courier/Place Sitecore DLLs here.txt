@@ -1,0 +1,4 @@
+Sitecore.Logging.dll
+Sitecore.Update.dll
+Sitecore.Zip.dll
+Sitecore.Kernel.dll
