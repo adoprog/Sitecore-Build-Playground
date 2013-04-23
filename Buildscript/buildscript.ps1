@@ -14,7 +14,7 @@ properties {
     $tag_dir = "$localStorage\LiveSite"  
 }
 
-task Package -depends Init, Compile, Zip
+task Package -depends Init, Compile, Courier, Zip
 
 task Init {
     if (-not (Test-Path $localStorage)) {
@@ -31,10 +31,10 @@ task Init {
     }
 
     if (Test-Path "$buildFolder\output") {
-        Remove-Item -Recurse -Force "$buildFolder\output"         
+        Remove-Item -Recurse -Force "$buildFolder\Output"         
     }
     
-    New-Item "$buildFolder\output" -type directory    
+    New-Item "$buildFolder\Output" -type directory    
     robocopy $localStorage\$distributiveName $buildFolder /E /XC /XN /XO
 }
 
@@ -43,6 +43,11 @@ task Compile {
 
   exec { msbuild $buildFolder\Website\LaunchSitecore.sln /p:Configuration=Release /t:Build } 
 
+}
+
+task Courier { 
+  New-Item $buildFolder\Data\serialization_empty -type directory -force
+  & "$buildFolder\Buildscript\Tools\Courier\Sitecore.Courier.Runner.exe" /source:$buildFolder\Data\serialization_empty /target:$buildFolder\Data\serialization /output:$buildFolder\Website\sitecore\admin\Packages\LaunchSitecoreItems.update
 }
 
 task Zip {
