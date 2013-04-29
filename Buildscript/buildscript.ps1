@@ -28,6 +28,7 @@ task Init {
     if (-not (Test-Path $localStorage\$distributiveName)) {
         sz x -y  "-o$localStorage" $zipFile "$distributiveName/Website"
         sz x -y  "-o$localStorage" $zipFile "$distributiveName/Data"
+        sz x -y  "-o$localStorage" $zipFile "$distributiveName/Databases"
     }
 
     if (Test-Path "$buildFolder\output") {
@@ -36,14 +37,13 @@ task Init {
     
     New-Item "$buildFolder\Output" -type directory    
     robocopy $localStorage\$distributiveName $buildFolder /E /XC /XN /XO
+    robocopy $localStorage\$distributiveName $buildFolder /E /XC /XN /XO
     robocopy $localStorage\$distributiveName\Website\bin $buildFolder\Buildscript\Tools\Courier /E /XC /XN /XO
 }
 
 task Compile { 
   exec { msbuild $buildFolder\Website\LaunchSitecore.sln /p:Configuration=Release /t:Clean } 
-
   exec { msbuild $buildFolder\Website\LaunchSitecore.sln /p:Configuration=Release /t:Build } 
-
 }
 
 task Courier { 
@@ -56,5 +56,5 @@ task Zip {
 
     sz a $outputPath "$buildFolder\data" -xr!?serialization_TAG\* -xr!serialization* -mx1
     sz a $outputPath "$buildFolder\website" -mx1
-    sz a $outputPath "$buildFolder\setSecurity.bat" -mx1
+    sz a $outputPath "$buildFolder\databases" -xr!*\Oracle\* -mx1
 }
