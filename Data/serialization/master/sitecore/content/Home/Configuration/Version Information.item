@@ -40,7 +40,7 @@ content-length: 38
 ----version----
 language: en
 version: 1
-revision: 3b433188-5eb1-4e4f-ac86-63e0379508b2
+revision: dbfb9daa-0602-412f-9c27-feb200b991b9
 
 ----field----
 field: {EBE1742D-BC5B-46F0-B16D-499C12C98CDE}
@@ -55,21 +55,21 @@ name: Launch Sitecore Version
 key: launch sitecore version
 content-length: 23
 
-Launch Sitecore 6.5.2.0
+Launch Sitecore 6.6.2.3
 ----field----
 field: {FADDFA40-F5E5-41C0-A615-52D542DFAB9F}
 name: Sitecore Version Image
 key: sitecore version image
-content-length: 168
+content-length: 158
 
-<image mediaid="{BC14876B-ECD6-48BC-9065-E0A493604D06}" mediapath="/Launch Sitecore/General/600pxNewMexico65svg1" src="~/media/BC14876BECD648BC9065E0A493604D06.ashx" />
+<image mediaid="{74C2D600-7604-45F9-94DE-822EC2C8CE7E}" mediapath="/Launch Sitecore/General/Sitecore66" src="~/media/74C2D600760445F994DE822EC2C8CE7E.ashx" />
 ----field----
 field: {74E81E2B-5DDA-4EBA-8ADE-A6EBE3CA31CF}
 name: Version Details
 key: version details
 content-length: 310
 
-<p>Launch Sitecore shows many of the features of Sitecore 6.5, and you have not only content about Sitecore but also a reference implementation.</p>
+<p>Launch Sitecore shows many of the features of Sitecore 6.6, and you have not only content about Sitecore but also a reference implementation.</p>
 <p>Major Features:</p>
 <ul>
  <li>Main and Mobile Sites</li>
@@ -104,14 +104,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-3b433188-5eb1-4e4f-ac86-63e0379508b2
+dbfb9daa-0602-412f-9c27-feb200b991b9
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 34
 
-20121210T193413:634907648536557155
+20130204T155215:634955899359960343
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
