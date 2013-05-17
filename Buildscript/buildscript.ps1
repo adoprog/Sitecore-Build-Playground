@@ -9,8 +9,7 @@ properties {
     $distributiveName = [System.IO.Path]::GetFileNameWithoutExtension($distributivePath)
     $zipFile = "$localStorage\$distributiveName.zip"
     $buildFolder = Resolve-Path .. 
-    $revision = "12345"
-    $buildNumber = "15"
+    $buildNumber = "12345"
     $tag_dir = "$localStorage\LiveSite"  
 }
 
