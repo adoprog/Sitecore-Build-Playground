@@ -16,6 +16,7 @@ $siteName = "LaunchSitecore"
 $licensePath = "C:\license.xml"
 $sourcePath = "$buildFolder\Output\LaunchSitecore.Build.12345.zip"
 $targetFolder = "E:\inetpub\wwwroot\LaunchSitecore"
+$sqlServerName = "$env:COMPUTERNAME\SQLEXPRESS"
 
 $server = New-Object ("Microsoft.SqlServer.Management.Smo.Server") $sqlServerName
 $databases = "core", "master", "web"
@@ -32,8 +33,6 @@ New-Item $targetFolder -type directory -Force -Verbose
 $packageFileName = [System.IO.Path]::GetFileNameWithoutExtension($sourcePath)
 $dataFolder = "$targetFolder\Data"
 $websiteFolder = "$targetFolder\Website"
-$serverName = $env:COMPUTERNAME
-$sqlServerName = "$serverName\SQLEXPRESS"
 
 # Main Script
 Unzip-Archive $sourcePath $targetFolder
