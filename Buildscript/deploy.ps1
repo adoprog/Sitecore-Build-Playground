@@ -17,6 +17,15 @@ $licensePath = "C:\license.xml"
 $sourcePath = "$buildFolder\Output\LaunchSitecore.Build.12345.zip"
 $targetFolder = "E:\inetpub\wwwroot\LaunchSitecore"
 
+$server = New-Object ("Microsoft.SqlServer.Management.Smo.Server") $sqlServerName
+$databases = "core", "master", "web"
+
+# Cleanup Databases from previuous installation (if needed)
+foreach ($db in $databases)
+{
+    Delete-Database $server "$siteName.$db"
+}
+
 New-Item $targetFolder -type directory -Force -Verbose
 
 # Additional variables
@@ -29,8 +38,7 @@ $sqlServerName = "$serverName\SQLEXPRESS"
 # Main Script
 Unzip-Archive $sourcePath $targetFolder
 
-$server = New-Object ("Microsoft.SqlServer.Management.Smo.Server") $sqlServerName
-$databases = "core", "master", "web"
+# Attach Databases
 foreach ($db in $databases)
 {
     Attach-Database $server "$siteName.$db" "$targetFolder\Databases\Sitecore.$db.mdf" "$targetFolder\Databases\Sitecore.$db.ldf"
