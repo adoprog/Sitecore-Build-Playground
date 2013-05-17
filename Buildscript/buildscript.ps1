@@ -36,7 +36,6 @@ task Init {
     
     New-Item "$buildFolder\Output" -type directory    
     robocopy $localStorage\$distributiveName $buildFolder /E /XC /XN /XO
-    robocopy $localStorage\$distributiveName $buildFolder /E /XC /XN /XO
     robocopy $localStorage\$distributiveName\Website\bin $buildFolder\Buildscript\Tools\Courier /E /XC /XN /XO
 }
 
