@@ -11,9 +11,10 @@ Import-Module IISUtils
 Import-Module FileUtils
 
 # Main variables
+$buildFolder = Resolve-Path .. 
 $siteName = "LaunchSitecore"
 $licensePath = "C:\license.xml"
-$sourcePath = "Z:\GitHub\Sitecore-Build-Playground\Output\LaunchSitecore.Build.15.zip"
+$sourcePath = "$buildFolder\Output\LaunchSitecore.Build.12345.zip"
 $targetFolder = "E:\inetpub\wwwroot\LaunchSitecore"
 
 New-Item $targetFolder -type directory -Force -Verbose
