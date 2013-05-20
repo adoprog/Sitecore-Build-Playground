@@ -50,3 +50,5 @@ Copy-Item $licensePath $dataFolder
 Create-AppPool $siteName "v4.0"
 Create-Site $siteName "$siteName.local" "$targetFolder"
 Add-HostFileContent "127.0.0.1" "$siteName.local"
+Get-WebPage "$siteName.local/InstallPackages.aspx"
+Get-WebPage "$siteName.local/Publish.aspx"
