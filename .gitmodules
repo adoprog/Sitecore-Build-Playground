@@ -5,3 +5,7 @@
 	path = Buildscript/Tools/PSake
 	url = https://github.com/psake/psake.git
 
+[submodule "Buildscript/Tools/DeploymentHelpers"]
+	path = Buildscript/Tools/DeploymentHelpers
+	url = https://github.com/adoprog/Sitecore-Deployment-Helpers.git
+
