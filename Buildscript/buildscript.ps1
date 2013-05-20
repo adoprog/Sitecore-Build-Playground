@@ -52,6 +52,7 @@ task Courier {
 task Zip {
     $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber.zip"
     Copy-Item "$buildFolder\website\bin_Net4\*" "$buildFolder\website\bin\"  
+    Copy-Item "$buildFolder\Buildscript\Tools\DeploymentHelpers\*" "$buildFolder\website\"  
 
     sz a $outputPath "$buildFolder\data" -xr!serialization* -mx1
     sz a $outputPath "$buildFolder\website" -mx1
