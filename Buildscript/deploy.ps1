@@ -12,14 +12,14 @@ Import-Module FileUtils
 
 # Main variables
 $buildFolder = Resolve-Path .. 
-$siteName = "LaunchSitecore"
-$licensePath = "C:\license.xml"
+$siteName = "LaunchSitecore7"
+$licensePath = "C:\ibu\license\license.xml"
 $sourcePath = "$buildFolder\Output\LaunchSitecore.Build.12345.zip"
-$targetFolder = "E:\inetpub\wwwroot\LaunchSitecore"
+$targetFolder = "C:\inetpub\wwwroot\LaunchSitecore7"
 $sqlServerName = "$env:COMPUTERNAME\SQLEXPRESS"
 
 $server = New-Object ("Microsoft.SqlServer.Management.Smo.Server") $sqlServerName
-$databases = "core", "master", "web"
+$databases = "core", "master", "web", "analytics"
 
 # Cleanup Databases from previuous installation (if needed)
 foreach ($db in $databases)

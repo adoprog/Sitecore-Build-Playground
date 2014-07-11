@@ -5,9 +5,12 @@ set-alias sz "$env:ProgramFiles\7-Zip\7z.exe"
 
 properties {
     $distributivePath = "C:\ibu\SIM repo\Sitecore 7.2 rev. 140526.zip"
+    $dmsDistributivePath = "C:\ibu\SIM repo\DMS 7.2 rev. 140526.zip"
     $localStorage = "C:\TempStorage"
     $distributiveName = [System.IO.Path]::GetFileNameWithoutExtension($distributivePath)
+    $dmsDistributiveName = [System.IO.Path]::GetFileNameWithoutExtension($dmsDistributivePath)
     $zipFile = "$localStorage\$distributiveName.zip"
+    $dmsZipFile = "$localStorage\$dmsDistributiveName.zip"
     $buildFolder = Resolve-Path .. 
     $buildNumber = "12345"
     $tag_dir = "$localStorage\LiveSite"  
@@ -23,11 +26,21 @@ task Init {
     if (-not (Test-Path $zipFile)) {
         Copy-Item $distributivePath $zipFile -Verbose
     }
-    
+
+    if (-not (Test-Path $dmsZipFile)) {
+        Copy-Item $dmsDistributivePath $dmsZipFile -Verbose
+    }
+   
     if (-not (Test-Path $localStorage\$distributiveName)) {
         sz x -y  "-o$localStorage" $zipFile "$distributiveName/Website"
         sz x -y  "-o$localStorage" $zipFile "$distributiveName/Data"
         sz x -y  "-o$localStorage" $zipFile "$distributiveName/Databases"
+    }
+
+    if (-not (Test-Path $localStorage\$dmsDistributiveName)) {
+        
+        #Unzip DMS Files
+        sz x -y  "-o$localStorage\$dmsDistributiveName" $dmsZipFile
     }
 
     if (Test-Path "$buildFolder\output") {
@@ -37,6 +50,10 @@ task Init {
     New-Item "$buildFolder\Output" -type directory    
     robocopy $localStorage\$distributiveName $buildFolder /E /XC /XN /XO
     robocopy $localStorage\$distributiveName\Website\bin $buildFolder\Buildscript\Tools\Courier /E /XC /XN /XO
+
+    robocopy $localStorage\$dmsDistributiveName $buildFolder\Website\App_Config\Include *.config /E /XC /XN /XO
+    robocopy $localStorage\$dmsDistributiveName $buildFolder\Databases *.mdf /E /XC /XN /XO
+    robocopy $localStorage\$dmsDistributiveName $buildFolder\Databases *.ldf /E /XC /XN /XO
 }
 
 task Compile { 
