@@ -4,8 +4,8 @@ if (-not (test-path "$env:ProgramFiles\7-Zip\7z.exe")) {throw "$env:ProgramFiles
 set-alias sz "$env:ProgramFiles\7-Zip\7z.exe" 
 
 properties {
-    $distributivePath = "C:\Sitecore 6.6.0 rev. 130404.zip"
-    $localStorage = "C:\LocalStorage"
+    $distributivePath = "C:\ibu\SIM repo\Sitecore 7.2 rev. 140526.zip"
+    $localStorage = "C:\TempStorage"
     $distributiveName = [System.IO.Path]::GetFileNameWithoutExtension($distributivePath)
     $zipFile = "$localStorage\$distributiveName.zip"
     $buildFolder = Resolve-Path .. 
@@ -40,8 +40,8 @@ task Init {
 }
 
 task Compile { 
-  exec { msbuild $buildFolder\Website\LaunchSitecore.sln /p:Configuration=Release /t:Clean } 
-  exec { msbuild $buildFolder\Website\LaunchSitecore.sln /p:Configuration=Release /t:Build } 
+  exec { msbuild $buildFolder\Website\LaunchSitecore7.sln /p:Configuration=Release /t:Clean } 
+  exec { msbuild $buildFolder\Website\LaunchSitecore7.sln /p:Configuration=Release /t:Build } 
 }
 
 task Courier { 
@@ -51,7 +51,7 @@ task Courier {
 
 task Zip {
     $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber.zip"
-    Copy-Item "$buildFolder\website\bin_Net4\*" "$buildFolder\website\bin\"  
+    #Copy-Item "$buildFolder\website\bin_Net4\*" "$buildFolder\website\bin\"  
     Copy-Item "$buildFolder\Buildscript\Tools\DeploymentHelpers\*" "$buildFolder\website\"  
 
     sz a $outputPath "$buildFolder\data" -xr!serialization* -mx1
