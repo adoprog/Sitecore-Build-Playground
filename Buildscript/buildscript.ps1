@@ -4,15 +4,15 @@ if (-not (test-path "$env:ProgramFiles\7-Zip\7z.exe")) {throw "$env:ProgramFiles
 set-alias sz "$env:ProgramFiles\7-Zip\7z.exe" 
 
 properties {
-    $distributivePath = "C:\ibu\SIM repo\Sitecore 7.2 rev. 140526.zip"
-    $dmsDistributivePath = "C:\ibu\SIM repo\DMS 7.2 rev. 140526.zip"
+    $distributivePath = "C:\Sources\distributives\Sitecore 7.2 rev. 140526.zip"
+    $dmsDistributivePath = "C:\Sources\distributives\DMS 7.2 rev. 140526.zip"
     $localStorage = "C:\TempStorage"
     $distributiveName = [System.IO.Path]::GetFileNameWithoutExtension($distributivePath)
     $dmsDistributiveName = [System.IO.Path]::GetFileNameWithoutExtension($dmsDistributivePath)
     $zipFile = "$localStorage\$distributiveName.zip"
     $dmsZipFile = "$localStorage\$dmsDistributiveName.zip"
     $buildFolder = Resolve-Path .. 
-    $buildNumber = "12345"
+    $buildNumber1 = $buildNumber;
     $tag_dir = "$localStorage\LiveSite"  
 }
 
@@ -67,7 +67,7 @@ task Courier {
 }
 
 task Zip {
-    $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber.zip"
+    $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber1.zip"
     #Copy-Item "$buildFolder\website\bin_Net4\*" "$buildFolder\website\bin\"  
     Copy-Item "$buildFolder\Buildscript\Tools\DeploymentHelpers\*" "$buildFolder\website\"  
 
