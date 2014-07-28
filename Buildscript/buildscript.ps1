@@ -11,8 +11,7 @@ properties {
     $dmsDistributiveName = [System.IO.Path]::GetFileNameWithoutExtension($dmsDistributivePath)
     $zipFile = "$localStorage\$distributiveName.zip"
     $dmsZipFile = "$localStorage\$dmsDistributiveName.zip"
-    $buildFolder = Resolve-Path .. 
-    $buildNumber1 = $buildNumber;
+    $buildFolder = Resolve-Path ..
     $tag_dir = "$localStorage\LiveSite"  
 }
 
@@ -67,7 +66,7 @@ task Courier {
 }
 
 task Zip {
-    $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber1.zip"
+    $outputPath = "$buildFolder\output\LaunchSitecore.Build.$buildNumber.zip"
     #Copy-Item "$buildFolder\website\bin_Net4\*" "$buildFolder\website\bin\"  
     Copy-Item "$buildFolder\Buildscript\Tools\DeploymentHelpers\*" "$buildFolder\website\"  
 
