@@ -9,13 +9,6 @@ master: {00000000-0000-0000-0000-000000000000}
 template: {2BDC8AF6-C00E-44A9-A644-4946A252A02E}
 templatekey: Title Abstract and Text
 
-----field----
-field: {06D5295C-ED2F-4A54-9BF2-26228D113318}
-name: __Icon
-key: __icon
-content-length: 0
-
-
 ----version----
 language: en
 version: 1
