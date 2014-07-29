@@ -70,7 +70,24 @@ task Zip {
     #Copy-Item "$buildFolder\website\bin_Net4\*" "$buildFolder\website\bin\"  
     Copy-Item "$buildFolder\Buildscript\Tools\DeploymentHelpers\*" "$buildFolder\website\"  
 
-    sz a $outputPath "$buildFolder\data" -xr!serialization* -mx1
-    sz a $outputPath "$buildFolder\website" -mx1
-    sz a $outputPath "$buildFolder\databases" -xr!*\Oracle\* -mx1
+    if ($isDevEnvironmentFlag -eq $null)
+    {
+        ### Zip Configuration for Test environment deploy
+        sz a $outputPath "$buildFolder\data" -xr!serialization* -mx1
+        sz a $outputPath "$buildFolder\website" -mx1
+        sz a $outputPath "$buildFolder\databases" -xr!*\Oracle\* -mx1        
+    }
+    else
+    {
+        ### Zip Configuration for Development environment deploy
+        sz a $outputPath "$buildFolder\data" -mx1
+        sz a $outputPath "$buildFolder\website" -mx1
+        sz a $outputPath "$buildFolder\databases" -xr!*\Oracle\* -mx1
+        sz a $outputPath "$buildFolder\.git" -mx1
+        sz a $outputPath "$buildFolder\.gitattributes" -mx1
+        sz a $outputPath "$buildFolder\.gitignore" -mx1
+        sz a $outputPath "$buildFolder\.gitmodules" -mx1
+        sz a $outputPath "$buildFolder\README.md" -mx1
+        
+    }
 }
