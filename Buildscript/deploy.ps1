@@ -14,7 +14,7 @@ Import-Module FileUtils
 properties {
     $buildFolder = Resolve-Path .. 
     $siteName = "LaunchSitecore7"
-    $licensePath = "C:\ibu\license\license.xml"
+    $licensePath = "C:\Sources\license\license.xml"
     $sourcePath = "$buildFolder\Output\LaunchSitecore.Build.$buildNumber.zip"
     $targetFolder = "C:\inetpub\wwwroot\LaunchSitecore7"
     $sqlServerName = "$env:COMPUTERNAME\SQLEXPRESS"
